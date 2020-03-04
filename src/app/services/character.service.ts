@@ -3,34 +3,26 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { CharacterResponse } from '../models/CharacterResponse';
-import { map, retry } from 'rxjs/operators';
 import { Character } from '../models/character';
 import { FilterOpt } from '../models/filterOptions';
-import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
 
-   allCharacters: Character[];
-   _characters: Character[];
-   characters$: BehaviorSubject<Character[]> = new BehaviorSubject([]);
-   _filteredCharacters: Character[];
-   filteredCharacters$: BehaviorSubject<Character[]> = new BehaviorSubject([]);
-   _selectedFilters: string[] = [];
-   selectedFilters$: BehaviorSubject<string[]> = new BehaviorSubject(this._selectedFilters);
-   _filterOptions : FilterOpt;
-   filterOptions$: BehaviorSubject<FilterOpt> = new BehaviorSubject(this._filterOptions);
-   
-   _isCharacterFiltered: boolean = false;
-   isCharacterFiltered$: BehaviorSubject<boolean> = new BehaviorSubject(this._isCharacterFiltered)
-   //isCharacterFiltered: boolean = false;
-
-   filterForm: FormGroup;
-   _male: boolean = false;
-   male$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
+  allCharacters: Character[];
+  _characters: Character[];
+  characters$: BehaviorSubject<Character[]> = new BehaviorSubject([]);
+  _filteredCharacters: Character[];
+  filteredCharacters$: BehaviorSubject<Character[]> = new BehaviorSubject([]);
+  _selectedFilters: string[] = [];
+  selectedFilters$: BehaviorSubject<string[]> = new BehaviorSubject(this._selectedFilters);
+  _filterOptions : FilterOpt;
+  filterOptions$: BehaviorSubject<FilterOpt> = new BehaviorSubject(this._filterOptions);
+  _isCharacterFiltered: boolean = false;
+  isCharacterFiltered$: BehaviorSubject<boolean> = new BehaviorSubject(this._isCharacterFiltered)
+  
 
   get characters() {
     return this._characters;
@@ -83,15 +75,6 @@ export class CharacterService {
     this._isCharacterFiltered = value;
     this.isCharacterFiltered$.next(this._isCharacterFiltered);
   }  
-
-  get male() {
-    return this._male;
-  }
-  set male(value:boolean) {
-    this._male = value;
-    this.male$.next(this._male);
-  }  
-
 
   constructor(private http: HttpClient) { }
 

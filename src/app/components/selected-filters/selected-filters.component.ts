@@ -21,16 +21,9 @@ export class SelectedFiltersComponent implements OnInit {
   }
 
   removeFilter(val: string, index: number) {
-    for (const key in this.characterService.filterOptions) {
-      let value = this.characterService.filterOptions[key];
-      value.forEach(element => {
-        if(element.label == val) {
-          return element.checked = false;
-        } 
-      });
-    }
-    this.characterService.male$.next(false);
-    this.characterService.selectedFilters.splice(index,1);
+    const filtered = this.characterService.selectedFilters.filter((value, index, arr)=> { return value != val;});
+    this.characterService.selectedFilters = filtered;
+    this.characterService.selectedFilters$.next(filtered);
     this.characterService.filterCharacters();
   }
 

@@ -1,3 +1,28 @@
+<!-- <h3>{{ filterLabel }}</h3>
+<form [formGroup]="filterForm">
+    <ul *ngFor="let option of (filterOptions$ | async | keyvalue)">
+        <label>{{option.key | titlecase}}</label>
+        
+        <li class="mb-2" *ngFor="let item of option.value">
+            <div class="form-check">
+                <span class="checkbox"></span>
+                <input type="checkbox" 
+                        class="form-check-input myinput" 
+                        name="{{item.label}}" 
+                        id="{{item.label}}"
+                        value="{{item.label}}" 
+                        checked="{{item.label}}"
+                        formControlName="{{item.controlName}}"
+                        (change)="selectFilters($event, item.controlName)">
+                <label class="form-check-label" for="{{item.label}}">
+                    {{item.label | titlecase}}
+                </label>
+            </div>
+        </li>
+    </ul>
+</form> -->
+
+
 <h3>{{ filterLabel }}</h3>
 <form [formGroup]="filterForm">
     <ul *ngFor="let option of (filterOptions$ | async | keyvalue)">
