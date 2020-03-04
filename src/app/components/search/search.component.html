@@ -1,0 +1,13 @@
+<p>Search by name</p>
+
+<div class="input-group mb-3">
+    <input type="text" 
+      class="form-control" 
+      placeholder="enter search text" 
+      aria-label="enter search text" 
+      aria-describedby="basic-addon2"
+      #searchText>
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="searchCharacter(searchText.value)">Search</button>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<h3>Selected Filters</h3>
+<ng-template #selectedFilter>*No filter selected yet</ng-template>
+<div *ngIf="(selectedFilters$ | async).length else selectedFilter">
+   <ul class="list-inline" *ngFor="let filter of (selectedFilters$ | async); let i = index">
+       <li class="list-inline-item">
+            <button role="button" class="btn btn-secondary" (click)="removeFilter(filter,i)">{{filter | titlecase}} X</button>
+       </li>
+   </ul>
+</div>

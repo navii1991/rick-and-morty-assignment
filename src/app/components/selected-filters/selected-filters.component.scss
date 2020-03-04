@@ -1,0 +1,6 @@
+.list-inline {
+    display: inline;
+    & .list-inline-item {
+        margin: 5px;
+    }
+}
